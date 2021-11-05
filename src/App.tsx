@@ -6,6 +6,7 @@ import { items } from './data/items'
 import { categories } from './data/categories'
 import { getCurrentMounth, filterListByMouth} from './helpers/dateFilter'
 import { TableArea } from './components/TableArea'
+import { InfoArea } from './components/InfoArea'
 
 export default function App () {
   const [List, setList] = useState(items)
@@ -22,7 +23,7 @@ export default function App () {
         </C.Header> 
         <C.Body>
            
-          {/* Area de Informações */}
+          <InfoArea/>
 
           {/* Area de inserção */}
 
