@@ -26,6 +26,7 @@ export const formatDate = (date: Date): string => {
     let day = date.getDate()
 
     return `${addZeroToDate(day)}/${addZeroToDate(month)}/${year}`
+
 }
 
 const addZeroToDate = (n: number): string => {
@@ -34,4 +35,10 @@ const addZeroToDate = (n: number): string => {
     } else {
         return `${n}`
     }
+}
+
+export const formatCurrentMouth = (currentMouth: string): string => {
+    let [year, mouth] = currentMouth.split('-')
+    let months = ['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro',' Outubro','Novembro','Dezembro']
+    return `${months[parseInt(mouth) - 1]} de ${year}`
 }
