@@ -1,5 +1,6 @@
 import * as C from './styles'
-import { formatCurrentMouth }  from '../../helpers/dateFilter'
+import { formatCurrentMouth }  from '../helpers/dateFilter'
+import { ResumeItem } from '../components/ResumeItem/index'
  
 type Props = {
     CurrentMouth: string
@@ -30,7 +31,10 @@ export const InfoArea = ({ CurrentMouth, onMonthChange, income, expense }: Props
                 <C.MouthArrow onClick={handleNextMouth}>➡️</C.MouthArrow>
             </C.MouthArea>
             <C.ResumeArea>
-
+                <ResumeItem title='Receitas' value={income}></ResumeItem>
+                <ResumeItem title='Despesas' value={expense}></ResumeItem>
+                <ResumeItem title='Balanço' value={income - expense} 
+                color={(income - expense) < 0 ? 'red' : 'green'}></ResumeItem>
             </C.ResumeArea>
         </C.Container>
     )

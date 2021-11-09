@@ -6,7 +6,7 @@ import { items } from './data/items'
 import { categories } from './data/categories'
 import { getCurrentMounth, filterListByMouth} from './helpers/dateFilter'
 import { TableArea } from './components/TableArea'
-import { InfoArea } from './components/InfoArea'
+import { InfoArea } from './InfoArea/index'
 
 export default function App () {
   const [List, setList] = useState(items)
@@ -18,6 +18,23 @@ export default function App () {
   useEffect(() => {
     setFilteredList( filterListByMouth(List, CurrentMonth) )
   },[List, CurrentMonth])
+
+  useEffect(() => {
+    let incomeCount = 0;
+    let expenseCount = 0;
+
+    for(let i in filteredList) {
+      if(categories[filteredList[i].category].expanse) {
+        expenseCount += filteredList[i].value
+      } else {
+        incomeCount += filteredList[i].value
+      }
+    }
+
+    setIncome(incomeCount)
+    setExpense(expenseCount)
+
+  }, [filteredList])
 
   const handleMouthChange = (newMouth: string) => {
     setCurrentMounth(newMouth)
